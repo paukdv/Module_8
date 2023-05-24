@@ -50,4 +50,6 @@ users = [
     {'name': 'Kim', 'birthday': datetime(year=2023, month=4, day=28)}
 ]
 
-get_birthdays_per_week(users)
+
+if __name__ == '__main__':
+    get_birthdays_per_week(users)
