@@ -10,13 +10,16 @@ days_week = {
     6: 'Sunday'
 }
 
-
 def get_birthdays_per_week(users):
 
     # визначення інтервалу, в якому потрібно вітати
     current_time = datetime.now()
     one_week_interval = timedelta(weeks=1)
     max_date = current_time + one_week_interval
+
+    # приведення дати народження до поточного року
+    for user in users:
+        user['birthday'] = user['birthday'].replace(year=current_time.year)
 
     # створення нового словнику, де в якості ключа буде імʼя
     dict_user = {}
@@ -40,16 +43,14 @@ def get_birthdays_per_week(users):
             if v == k:
                 print(f'{v}:', ', '.join(j))
 
-
 users = [
-    {'name': 'Bill', 'birthday': datetime(year=2023, month=5, day=30)},
-    {'name': 'Jill', 'birthday': datetime(year=2023, month=5, day=31)},
-    {'name': 'Jan', 'birthday': datetime(year=2023, month=6, day=1)},
-    {'name': 'Sam', 'birthday': datetime(year=2023, month=5, day=27)},
+    {'name': 'Bill', 'birthday': datetime(year=1873, month=4, day=30)},
+    {'name': 'Jill', 'birthday': datetime(year=2398, month=5, day=31)},
+    {'name': 'Jan', 'birthday': datetime(year=1987, month=6, day=1)},
+    {'name': 'Sam', 'birthday': datetime(year=1956, month=5, day=27)},
     {'name': 'Kiril', 'birthday': datetime(year=2023, month=5, day=27)},
-    {'name': 'Kim', 'birthday': datetime(year=2023, month=4, day=28)}
+    {'name': 'Kim', 'birthday': datetime(year=2000, month=4, day=28)}
 ]
-
 
 if __name__ == '__main__':
     get_birthdays_per_week(users)
